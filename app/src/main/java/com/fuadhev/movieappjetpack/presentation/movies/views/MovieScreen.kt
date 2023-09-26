@@ -41,6 +41,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.fuadhev.movieappjetpack.presentation.Screen
 import com.fuadhev.movieappjetpack.presentation.movies.MovieEvent
 import com.fuadhev.movieappjetpack.presentation.movies.MoviesViewModel
 
@@ -65,15 +66,16 @@ fun MovieScreen(
                 }
             )
 
+
             LazyColumn(modifier = Modifier.fillMaxSize()) {
                 items(state.movies) { movie ->
-                    Text(text=movie.Title,modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center,color= Color.White)
+//                    Text(text=movie.Title,modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center,color= Color.White)
 
-//                    MovieListRow(movie = movie, onItemClick = {
-//                        Log.e("movie", "${it.Title} ", )
-//                        //navigate to details
-////                        navController.navigate(Screen.MovieDetailScreen.route+"/${movie.imdbID}")
-//                    })
+                    MovieListRow(movie = movie, onItemClick = {
+                        Log.e("movie", "${it.Title} ", )
+                        //navigate to details
+                        navController.navigate(Screen.MovieDetailScreen.route+"/${movie.imdbID}")
+                    })
                 }
             }
         }
@@ -147,6 +149,7 @@ fun MovieSearchBar(
         }
     }
 }
+
 
 
 

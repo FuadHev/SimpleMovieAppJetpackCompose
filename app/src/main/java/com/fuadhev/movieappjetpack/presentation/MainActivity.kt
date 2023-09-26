@@ -13,9 +13,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.fuadhev.movieappjetpack.presentation.movie_detail.views.MovieDetailScreen
 import com.fuadhev.movieappjetpack.presentation.movies.MoviesViewModel
 import com.fuadhev.movieappjetpack.presentation.movies.views.MovieScreen
 import com.fuadhev.movieappjetpack.presentation.theme.MovieAppJetpackTheme
+import com.fuadhev.movieappjetpack.util.Constants.IMDB_ID
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -23,6 +25,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+
             MovieAppJetpackTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
@@ -34,8 +37,8 @@ class MainActivity : ComponentActivity() {
                         composable(route = Screen.MovieScreen.route){
                             MovieScreen(navController = navController)
                         }
-                        composable(route = Screen.MovieDetailScreen.route){
-
+                        composable(route = Screen.MovieDetailScreen.route+"/{${IMDB_ID}}") {
+                            MovieDetailScreen()
                         }
 
                     }
